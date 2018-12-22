@@ -1,22 +1,12 @@
-var express = require('express');
-var path = require('path');
-
+var express = require("express");
 var app = express();
-
 var PORT = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + "/app/public/survey"));
 
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-app.get('/survey', function(req, res){
-    res.sendFile(path.join(__dirname, "/app/public/survey/"));
-}); 
-
+app.use(express.static("app/public/index"));
 
 app.get("/survey/questions", function (req, res) {
 
@@ -67,6 +57,9 @@ app.get("/survey/questions", function (req, res) {
 
 });
 
-app.listen(PORT, function () {
-    console.log("Server listening on: http://localhost:" + PORT);
-});
+app.listen(PORT, function() {
+    console.log("App listening on localhost:"+ PORT);
+  });
+
+
+

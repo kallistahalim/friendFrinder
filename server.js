@@ -7,6 +7,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("app/public/index"));
+app.use(express.static("app/routing/apiRoutes"));
+
 
 app.get("/survey/questions", function (req, res) {
 
@@ -56,6 +58,9 @@ app.get("/survey/questions", function (req, res) {
     res.json(questions);
 
 });
+
+
+
 
 app.listen(PORT, function() {
     console.log("App listening on localhost:"+ PORT);
